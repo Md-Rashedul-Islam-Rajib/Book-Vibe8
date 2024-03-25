@@ -12,7 +12,7 @@ const Blogs = () => {
             <h2 className="text-4xl font-bold text2">Books</h2>
             
           </div>
-          <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
             {
                 blogs.map((blog,idx)=> <Blog key={idx} blog={blog}></Blog>)
             }
