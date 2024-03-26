@@ -6,16 +6,25 @@ import MainLayout from './pages/MainLayout.jsx'
 import Home from './pages/Home.jsx'
 import ListedBook from './pages/ListedBook.jsx'
 import PageToRead from './pages/PageToRead.jsx'
+import BookDetails from './pages/BookDetails.jsx'
+import ErrorPage from './pages/ErrorPage.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
       element: <Home></Home>,
-      loader: async () => fetch('/data.json')
+      loader: async () => fetch('/data.json'),
+      },
+      {
+        path: '/book/:id',
+        element: <BookDetails></BookDetails>,
+        loader: async () => fetch('/data.json')
+      
       },
       {
         path: '/listedbook',
@@ -31,7 +40,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <div className="mx-32">
-    <MainLayout></MainLayout>
     <RouterProvider router={router}></RouterProvider>
     </div>
   </React.StrictMode>,

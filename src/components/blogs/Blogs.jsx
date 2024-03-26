@@ -3,7 +3,6 @@ import Blog from "./Blog";
 
 const Blogs = () => {
     const blogs = useLoaderData();
-    console.log(blogs);
   return (
     <div>
       <section className="py-6 sm:py-12 bg-white text-[#131313]">

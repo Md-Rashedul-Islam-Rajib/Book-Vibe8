@@ -1,12 +1,12 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import { CiStar } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const Blog = ({ blog }) => {
-  const {bookName,author,image,review,totalPages,raitng,cetegory,tags,publisher,yearOfPublishing} = blog;
+  const {id,bookName,author,image,review,totalPages,rating,category,tags,publisher,yearOfPublishing} = blog;
   return (
-    <article className="flex flex-col bg-white">
+    <Link to={`/book/${id}`} className="flex flex-col bg-white border rounded-lg p-4">
       <a
-        rel="noopener noreferrer"
-        href="#"
         aria-label={bookName}
       >
         <img
@@ -27,19 +27,20 @@ const Blog = ({ blog }) => {
           className="text-xs tracking-wider uppercase hover:underline text-violet-400"
         >
           {
-          tags.map((tag,idx)=> <span className="mr-4" key={idx}>{tag}</span>)
+          tags.map((tag,idx)=> <button className="mr-4 btn-sm rounded-lg bg-[#23BE0A0D] text-[#23BE0A] font-medium" key={idx}>{tag}</button>)
           }
         </a>
-        <h3 className="flex-1 py-2 text-lg font-semibold leading-snug">
+        <h3 className="flex-1 py-2 text-2xl font-semibold leading-snug text2 font-bold">
           {bookName}
         </h3>
-        <p>By : {author}</p>
-        <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs text-gray-400">
-          <span>June 1, 2020</span>
-          <span>2.1K views</span>
+        <p className="text1 font-medium text-[#131313CC] mb-4">By : {author}</p>
+        <div className="border border-b border-dashed"></div>
+        <div className="flex flex-wrap justify-between pt-3 space-x-2  text-[#131313CC] font-medium">
+          <span>{category}</span>
+          <span className="flex items-center gap-3">{rating} <CiStar /></span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 };
 

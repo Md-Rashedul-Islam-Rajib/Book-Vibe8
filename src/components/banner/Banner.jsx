@@ -1,10 +1,14 @@
+
+
 const Banner = () => {
+
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content w-3/4 flex-col lg:flex-row-reverse justify-between">
         <img
-          src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-          className="max-w-sm rounded-lg shadow-2xl"
+          src='/banner.png'
+          className="max-w-sm rounded-lg shadow-2xl bg-base-200"
         />
         <div>
           <h1 className="text-5xl font-bold text2 leading-[84px] mb-8">Books to freshen up <br /> your bookshelf</h1>
