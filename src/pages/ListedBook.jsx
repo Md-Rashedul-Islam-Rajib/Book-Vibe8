@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, Outlet, useLoaderData } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 
+
 const ListedBook = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const books = useLoaderData();
@@ -18,13 +19,13 @@ const ListedBook = () => {
             Sort <IoIosArrowDown />
           </summary>
           <ul className="p-2 shadow menu dropdown-content z-[1] bg-gray-50 rounded-box w-32">
-            <li className="text1 text-lg font-semibold text-[#23BE0A]">
+            <li onClick={()=>handleSort('rating')} className="text1 text-lg font-semibold text-[#23BE0A]">
               <a>Rating</a>
             </li>
-            <li className="text1 text-lg font-semibold text-[#23BE0A]">
+            <li onClick={()=>handleSort('totalPages')} className="text1 text-lg font-semibold text-[#23BE0A]">
               <a>Number of Pages</a>
             </li>
-            <li className="text1 text-lg font-semibold text-[#23BE0A]">
+            <li onClick={()=>handleSort('yearOfPublishing')} className="text1 text-lg font-semibold text-[#23BE0A]">
               <a>Publish Year</a>
             </li>
           </ul>

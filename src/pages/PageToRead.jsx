@@ -77,7 +77,7 @@ const PageToRead = () => {
     }, []);
     console.log(bookList);
     return (
-        <div className='bg-gray-100 p-8 rounded-xl'>
+        <div className='bg-gray-100 p-8 rounded-xl container'>
             
 
 
