@@ -12,15 +12,11 @@ const ReadList = () => {
         if (books.length > 0) {
           const readList = books.filter((book) => storedBookIds.includes(book.id));
             setBookList(readList)
-          console.log(readList);
-          console.log(books);
-          console.log(storedBookIds);
         }
       }, []);
     return (
         <div>
             
-            </div>
             {bookList.map((book,idx)=><ReadlistCard key={idx} book={book}></ReadlistCard>)}
         </div>
     );

@@ -1,8 +1,12 @@
 
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { getStoredBookInfo } from '../utilities/localStorage';
+import { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 
+  
 const data = [
   {
     name: 'Page A',
@@ -62,6 +66,16 @@ const TriangleBar = (props) => {
 };
 
 const PageToRead = () => {
+  const [bookList,setBookList] = useState([]);
+  const books = useLoaderData();
+  useEffect(() => {
+      const storedBookIds = getStoredBookInfo();
+      if (books.length > 0) {
+        const readList = books.filter((book) => storedBookIds.includes(book.id));
+          setBookList(readList)
+      }
+    }, []);
+    console.log(bookList);
     return (
         <div className='bg-gray-100 p-8 rounded-xl'>
             
@@ -70,13 +84,13 @@ const PageToRead = () => {
     <BarChart
       width={1200}
       height={500}
-      data={data}
+      data={bookList}
       
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
+      <XAxis dataKey="bookName" />
       <YAxis />
-      <Bar dataKey="uv" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+      <Bar dataKey="totalPages" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
         {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % 20]} />
         ))}

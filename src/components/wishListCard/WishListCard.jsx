@@ -4,16 +4,15 @@ import { GoPeople } from "react-icons/go";
 import { IoBookOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-const ReadlistCard = ({ book }) => {
-  
-  const {id,bookName,image,author,tags,yearOfPublishing,publisher,totalPages,category,rating} = book;
-  return (
-    <div>
+const WishListCard = ({book}) => {
+    const {id,bookName,image,author,tags,yearOfPublishing,publisher,totalPages,category,rating} = book;
+    return (
+        <div>
         <div className="h-96 p-4 rounded-xl">
             <div className="border rounded-xl p-4">
                 <div className="flex gap-6">
                     <div className="bg-[#1313130D] rounded-xl w-84 max-h-80">
-                        <img className="max-h-72 rounded-xl" src={image} alt="" />
+                        <img src={image} alt="" />
                     </div>
                     <div className="flex flex-col gap-4 justify-center">
                         <div>
@@ -40,6 +39,7 @@ const ReadlistCard = ({ book }) => {
                         <div className="flex gap-4 text1">
                             <div><button className="mr-4 btn-sm rounded-3xl bg-[#328EFF26] text-[#328EFF] font-medium">Category : {category}</button></div>
                             <div><button className="mr-4 btn-sm rounded-3xl bg-[#FFAC3326] text-[#FFAC33] font-medium" >Rating : {rating}</button></div>
+                            
                             <Link to={`/book/${id}`}>
                             <div><button className="mr-4 btn-sm rounded-3xl bg-[#23BE0A] text-white font-medium" >View Details</button></div>
                             </Link>
@@ -50,7 +50,7 @@ const ReadlistCard = ({ book }) => {
             </div>
         </div>
     </div>
-  );
+    );
 };
 
-export default ReadlistCard;
+export default WishListCard;

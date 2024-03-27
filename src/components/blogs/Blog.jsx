@@ -3,7 +3,7 @@ import { CiStar } from "react-icons/ci";
 import { Link } from "react-router-dom";
 
 const Blog = ({ blog }) => {
-  const {id,bookName,author,image,review,totalPages,rating,category,tags,publisher,yearOfPublishing} = blog;
+  const {id,bookName,author,image,rating,category,tags} = blog;
   return (
     <Link to={`/book/${id}`} className="flex flex-col bg-white border rounded-lg p-4">
       <a
