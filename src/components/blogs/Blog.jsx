@@ -27,7 +27,7 @@ const Blog = ({ blog }) => {
           className="text-xs tracking-wider uppercase hover:underline text-violet-400"
         >
           {
-          tags.map((tag,idx)=> <button className="mr-4 btn-sm rounded-lg bg-[#23BE0A0D] text-[#23BE0A] font-medium" key={idx}>{tag}</button>)
+          tags.map((tag,idx)=> <button className=" mr-2 lg:mr-4 btn-sm rounded-lg bg-[#23BE0A0D] text-[#23BE0A] font-medium" key={idx}>{tag}</button>)
           }
         </a>
         <h3 className="flex-1 py-2 text-2xl font-semibold leading-snug text2 font-bold">
