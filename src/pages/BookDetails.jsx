@@ -5,44 +5,42 @@ import {
   getStoredWishListInfo,
   saveWishListInfo,
 } from "../utilities/localStorage2";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 const BookDetails = () => {
   const [wishListValue, setWishListValue] = useState();
   const [readListValue, setReadListValue] = useState();
   const books = useLoaderData();
-  useEffect(() => {
-    const storedBookIds = getStoredWishListInfo();
-    if (books.length > 0) {
-      const readList = books.find((book) => storedBookIds.includes(book.id));
-      setWishListValue(readList);
-    }
-  }, []);
-  useEffect(() => {
-    const storedBookIds = getStoredBookInfo();
-    if (books.length > 0) {
-      const readList = books.find((book) => storedBookIds.includes(book.id));
-      setReadListValue(readList);
-    }
-  }, []);
+  
   const { id } = useParams();
   const intId = parseInt(id);
   const book = books.find((book) => book.id === intId);
 
   const handleWishlist = () => {
-    if (wishListValue) {
-      toast.success("Book added successfully to wishlist ");
-      saveWishListInfo(intId);
-    } else {
-      toast.error("Book Already exist in wishlist");
-    }
+    const storedBookIdsInWishList = getStoredWishListInfo();
+    const storedBookIdsInReadList = getStoredBookInfo();
+    const existsInWishList = storedBookIdsInWishList.find((id)=>id===intId)
+    const existsInReadList = storedBookIdsInReadList.find((id)=>id===intId)
+      if(!existsInWishList && !existsInReadList){
+        saveWishListInfo(intId);
+        toast.success('Book Added To Wish List')
+      }else if(existsInReadList){
+        toast.error('Book Already Added to Read List')
+      }
+      else{
+        toast.error('Book Already Added to Wish List')
+      }
+    
   };
   const handleReadlist = () => {
-    saveBookInfo(intId);
-    if (readListValue) {
-      toast.success("Book added successfully to readlist");
-    } else {
-      toast.error("Book already exist in readlist");
-    }
+    const storedBookIdsInReadList = getStoredBookInfo();
+    const existsInReadList = storedBookIdsInReadList.find((id)=>id===intId)
+      if(!existsInReadList){
+        saveBookInfo(intId);
+        toast.success('Book Added To Book List')
+      }else{
+        toast.error('Book Already Added to Book List')
+      }
+    
   };
   return (
     <div className="container max-w-6xl h-full p-6 mx-auto space-y-6 sm:space-y-12">

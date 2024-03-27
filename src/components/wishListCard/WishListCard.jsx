@@ -12,7 +12,7 @@ const WishListCard = ({book}) => {
             <div className="border rounded-xl p-4">
                 <div className="flex gap-6">
                     <div className="bg-[#1313130D] rounded-xl w-84 max-h-80">
-                        <img src={image} alt="" />
+                        <img className="max-h-72 rounded-xl" src={image} alt="" />
                     </div>
                     <div className="flex flex-col gap-4 justify-center">
                         <div>
