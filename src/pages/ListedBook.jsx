@@ -5,7 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const ListedBook = () => {
   const [tabIndex, setTabIndex] = useState(0);
-  const books = useLoaderData();
+  
 
   return (
     <div>
